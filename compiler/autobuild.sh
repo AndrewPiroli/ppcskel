@@ -11,9 +11,9 @@ binutils_ver=binutils-2.24
 
 if [ $ENABLE_CPLUSPLUS -eq 1 ]
 then
-	$LANGS=c,c++
+	LANGS=c,c++
 else
-	$LANGS=c
+	LANGS=c
 fi
 
 start_dir=$(pwd)
