@@ -4,7 +4,7 @@ endif
 
 PREFIX = $(DEVKITAMATEUR)/bin/powerpc-none-elf-
 
-CFLAGS = -mcpu=750 -mpaired -m32 -mhard-float -mno-eabi -mno-sdata
+CFLAGS = -mcpu=750 -m32 -mhard-float -mno-eabi -mno-sdata
 CFLAGS += -ffreestanding -ffunction-sections
 CFLAGS += -Wall -Wextra -O0 -pipe
 ASFLAGS =
