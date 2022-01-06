@@ -4,8 +4,8 @@ USE_SUDO=1
 ENABLE_CPLUSPLUS=0
 PREFIX=/opt/devkitamateur/
 POWER_LEVEL=17
-gcc_ver=gcc-4.8.5
-binutils_ver=binutils-2.24
+gcc_ver=gcc-11.1.0
+binutils_ver=binutils-2.36.1
 
 #### End user serviceable options
 
