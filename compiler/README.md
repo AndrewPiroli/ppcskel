@@ -2,11 +2,12 @@
 
 ## I know how to build a compiler, just give me the details
 
-Start with an older GCC/binutils, target powerpc-none-elf and install wherever you like, there is no need to build a standard library
+~~Start with an older GCC/binutils, target powerpc-none-elf and install wherever you like, there is no need to build a standard library~~
+Newer builds like GCC 11.0 and binutils 2.36.1 work just fine. GCC builds newer than 8.0-ish must remove the -mpaired CFLAG as GCC removed paired single support for powerpc platforms in that version.
 
-I tested GCC 4.8.5 and binutils 2.24, which are super old but still work on a modern Ubuntu 20.04 LTS system (C++ support does not build, only C).
+~~I tested GCC 4.8.5 and binutils 2.24, which are super old but still work on a modern Ubuntu 20.04 LTS system (C++ support does not build, only C).~~
 
-Newer compilers/binutils should work, but I ran into an issue with an integer overflow bug affecting an ELF Program Header on some versions, so if your shiny new compiler doesn't work, run it through `powerpc-none-elf-readelf -l` and check the Program Headers MemSize, it should be "not huge". Other issues are tough to debug since mini's only useful output before ppcboot loads is via USB Gecko.
+Newer compilers/binutils ~~should~~ work, ~~but I ran into an issue with an integer overflow bug affecting an ELF Program Header on some versions, so if your shiny new compiler doesn't work, run it through `powerpc-none-elf-readelf -l` and check the Program Headers MemSize, it should be "not huge". Other!~~ issues are tough to debug since mini's only useful output before ppcboot loads is via USB Gecko.
 
 Once you are done, point DEVKITAMATEUR to the prefix you built & installed your compiler to.
 
@@ -22,7 +23,7 @@ There are some options to set (by editing the script), PREFIX is where the files
 
 USE\_SUDO should be left at 1 if `make install` will need sudo powers to write to PREFIX, else you can set it to 0.
 
-ENABLE\_CPLUSPLUS is 0 by default since the default gcc version does not build on modern systems with C++ support.
+ENABLE\_CPLUSPLUS is 0 by default ~~since the default gcc version does not build on modern systems with C++ support.~~
 
 POWER\_LEVEL determines how many make jobs to use, this greatly improves compiliation time.
 
