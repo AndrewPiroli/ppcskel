@@ -1,11 +1,12 @@
+#!/usr/bin/env bash
 #### User serviceable options
 
 USE_SUDO=1
-ENABLE_CPLUSPLUS=0
+ENABLE_CPLUSPLUS=1
 PREFIX=/opt/devkitamateur/
 POWER_LEVEL=17
-gcc_ver=gcc-11.1.0
-binutils_ver=binutils-2.36.1
+gcc_ver=gcc-12.1.0
+binutils_ver=binutils-2.39
 
 #### End user serviceable options
 
