@@ -5,6 +5,7 @@ USE_SUDO=1
 ENABLE_CPLUSPLUS=1
 PREFIX=/opt/devkitamateur/
 POWER_LEVEL=17
+VERIFY_DL=1
 gcc_ver=gcc-12.2.0
 binutils_ver=binutils-2.39
 
@@ -21,15 +22,38 @@ start_dir=$(pwd)
 binutils_url=https://ftp.gnu.org/gnu/binutils/${binutils_ver}.tar.gz
 gcc_url=https://ftp.gnu.org/gnu/gcc/${gcc_ver}/${gcc_ver}.tar.gz
 
-echo Download binutils
-wget $binutils_url
-echo Extracting binutils
-tar xf ${binutils_ver}.tar.gz
+rm -rf binutils-build
+rm -rf gcc-build
 
-echo Download GCC
-wget $gcc_url
-echo Extracting GCC
-tar xf ${gcc_ver}.tar.gz
+if ! [[ -d "${gcc_ver}" ]]
+then
+	if ! [[ -f "${gcc_ver}.tar.gz" ]]
+	then
+		echo Download GCC
+		wget $gcc_url
+		if [ $VERIFY_DL -eq 1 ] && ! sha256sum --strict -c hash_gcc.txt; then
+			echo gcc tarball did not match stored hash
+			exit 1
+		fi
+	fi
+	echo Extracting GCC
+	tar xf ${gcc_ver}.tar.gz
+fi
+
+if ! [[ -d "${binutils_ver}" ]]
+then
+	if ! [[ -f "${binutils_ver}.tar.gz" ]]
+	then
+		echo Download binutils
+		wget $binutils_url
+		if [ $VERIFY_DL -eq 1 ] && ! sha256sum --strict -c hash_binutils.txt; then
+			echo binutils tarball did not match stored hash
+			exit 1
+		fi
+	fi
+	echo Extracting binutils
+	tar xf ${binutils_ver}.tar.gz
+fi
 
 echo Starting build!
 mkdir binutils-build
