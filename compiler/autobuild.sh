@@ -4,7 +4,7 @@
 USE_SUDO=1
 ENABLE_CPLUSPLUS=1
 PREFIX=/opt/devkitamateur/
-POWER_LEVEL=17
+MAKE_JOBS=17
 VERIFY_DL=1
 gcc_ver=gcc-12.2.0
 binutils_ver=binutils-2.39
@@ -59,7 +59,7 @@ echo Starting build!
 mkdir binutils-build
 cd binutils-build
 ../${binutils_ver}/configure --prefix=${PREFIX} --target=powerpc-none-elf --disable-nls --with-sysroot --disable-werror
-make -j${POWER_LEVEL}
+make -j${MAKE_JOBS}
 if [ $USE_SUDO -eq 1 ]
 then
 	sudo make install
@@ -70,8 +70,8 @@ cd $start_dir
 mkdir gcc-build
 cd gcc-build
 ../${gcc_ver}/configure --prefix=${PREFIX} --target=powerpc-none-elf --disable-nls --enable-languages=${LANGS} --without-headers
-make all-gcc -j${POWER_LEVEL}
-make all-target-libgcc -j${POWER_LEVEL}
+make all-gcc -j${MAKE_JOBS}
+make all-target-libgcc -j${MAKE_JOBS}
 if [ $USE_SUDO -eq 1 ]
 then
 	sudo make install-gcc
