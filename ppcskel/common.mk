@@ -8,7 +8,7 @@ RANLIB = $(PREFIX)ranlib
 STRIP = $(PREFIX)strip
 
 ifeq ($(NOMAPFILE),)
-LDFLAGS += -Wl,-Map,$(TARGET).map
+LDFLAGS += -Wl,-Map,$(TARGET).map -Wl,--no-warn-rwx-segments
 endif
 
 ifneq ($(LDSCRIPT),)

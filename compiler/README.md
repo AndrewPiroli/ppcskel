@@ -1,18 +1,5 @@
 # Getting a working compiler
 
-## I know how to build a compiler, just give me the details
-
-~~Start with an older GCC/binutils, target powerpc-none-elf and install wherever you like, there is no need to build a standard library~~
-Newer builds like GCC 11.0 and binutils 2.36.1 work just fine. GCC builds newer than 8.0-ish must remove the -mpaired CFLAG as GCC removed paired single support for powerpc platforms in that version.
-
-~~I tested GCC 4.8.5 and binutils 2.24, which are super old but still work on a modern Ubuntu 20.04 LTS system (C++ support does not build, only C).~~
-
-Newer compilers/binutils ~~should~~ work, ~~but I ran into an issue with an integer overflow bug affecting an ELF Program Header on some versions, so if your shiny new compiler doesn't work, run it through `powerpc-none-elf-readelf -l` and check the Program Headers MemSize, it should be "not huge". Other!~~ issues are tough to debug since mini's only useful output before ppcboot loads is via USB Gecko.
-
-Once you are done, point DEVKITAMATEUR to the prefix you built & installed your compiler to.
-
-## I'm \*nix savvy, but I don't know much about building compilers
-
 The autobuild.sh bash script will attempt to download binutils and GCC for you and try to compile them.
 
 It does not build a standard library since this project does not require that. The resulting compiler will only be able to build freestanding executables.

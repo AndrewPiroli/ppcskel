@@ -6,8 +6,8 @@ ENABLE_CPLUSPLUS=1
 PREFIX=/opt/devkitamateur/
 MAKE_JOBS=17
 VERIFY_DL=1
-gcc_ver=gcc-12.2.0
-binutils_ver=binutils-2.39
+gcc_ver=gcc-13.1.0
+binutils_ver=binutils-2.40
 
 #### End user serviceable options
 
