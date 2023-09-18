@@ -6,7 +6,7 @@ Skeleton code for mini-based homebrew
 
 This code requires a powerpc-none-elf- cross compiler, devkitPro currently ships a powerpc-eabi- cross compiler which is not compatible with the project in it's current state.
 
-Tested working with GGC/13.1.0 binutils/2.40.0
+Tested working with GGC/13.2.0 binutils/2.41.0
 
 ## Credits
 
