@@ -12,4 +12,4 @@ Tested working with GGC/13.2.0 binutils/2.41.0
 
 Thanks to MethodOrMadness and company for testing and help finding a USB Gecko.
 
-Without the USB Gecko's debug output from mini, it would have taken much longer to find the bugged ELF Program Header.
+Without the USB Gecko's debug output from mini, it would have taken much longer to find the bugged compiler we had issues with.
